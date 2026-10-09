@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestionale NBCR - Prototipo</title>
+<style>
+:root{--bg:#071525;--panel:#0d2034;--panel2:#102a43;--line:#24435f;--text:#f2f6fa;--muted:#a9bbcb;--accent:#1677e8}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#071525,#0b1d30 55%,#081321);color:var(--text);min-height:100vh}
+header{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 28px;gap:18px;background:#091a2b}
+.logo{width:44px;height:44px;border:2px solid #7890a4;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px}
+.brand b{font-size:25px}.brand small{display:block;color:var(--muted);margin-top:2px}
+.user{margin-left:auto;color:var(--muted);font-size:14px}
+.layout{display:flex;min-height:calc(100vh - 76px)}
+aside{width:235px;border-right:1px solid var(--line);padding:18px 12px;background:#081827}
+nav button{width:100%;border:0;background:transparent;color:#dce6ef;text-align:left;padding:14px 15px;border-radius:9px;margin:3px 0;font-size:15px;cursor:pointer}
+nav button:hover,nav button.active{background:#194b86;color:#fff}
+.status{position:absolute;bottom:20px;padding:0 15px;color:#8fa4b7;font-size:12px}.dot{display:inline-block;width:9px;height:9px;background:#27c979;border-radius:50%;margin-right:8px}
+main{flex:1;padding:38px 45px;position:relative;overflow:hidden}
+main:before{content:"NBCR";position:absolute;right:3%;top:7%;font-size:180px;font-weight:900;letter-spacing:10px;color:rgba(255,255,255,.025);pointer-events:none}
+h1{margin:0;font-size:36px}.sub{color:var(--muted);margin:8px 0 28px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:20px;position:relative}
+.card{background:linear-gradient(145deg,#102b46,#0c2034);border:1px solid var(--line);border-radius:14px;padding:23px;min-height:175px;cursor:pointer;transition:.18s}
+.card:hover{transform:translateY(-3px);border-color:#397db8;box-shadow:0 12px 35px #0005}
+.icon{width:48px;height:48px;border-radius:11px;display:grid;place-items:center;font-size:25px;background:#176ed0;margin-bottom:18px}
+.card:nth-child(2) .icon{background:#15956a}.card:nth-child(3) .icon{background:#e58a22}.card:nth-child(4) .icon{background:#7455d9}.card:nth-child(5) .icon{background:#119bb9}.card:nth-child(6) .icon{background:#58728d}.card:nth-child(7) .icon{background:#d43e52}.card:nth-child(8) .icon{background:#527da4}
+.card h3{margin:0 0 7px;font-size:19px}.card p{margin:0;color:#aebfce;font-size:13px;line-height:1.45}
+.view{display:none}.view.active{display:block}.back{border:1px solid var(--line);background:var(--panel);color:white;padding:10px 15px;border-radius:8px;cursor:pointer;margin-bottom:20px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:10px;overflow:hidden}th,td{padding:13px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}th{color:#a9bbcb;background:#102a43}
+.notice{margin-top:28px;background:#102a43;border-left:4px solid #f0a22e;padding:15px;border-radius:8px;color:#dce6ef}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){aside{width:180px}main{padding:25px 20px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">NBCR</div>
+  <div class="brand"><b>GESTIONALE NBCR</b><small>Nucleo Regionale / Provinciale NBCR</small></div>
+  <div class="user">Prototipo • ambiente locale</div>
+</header>
+<div class="layout">
+<aside>
+<nav id="nav">
+<button class="active" data-view="home">⌂ &nbsp; Home</button>
+<button data-view="materiali">⚗ &nbsp; Materiali</button>
+<button data-view="strumenti">▣ &nbsp; Strumentazione</button>
+<button data-view="bombole">◉ &nbsp; Bombole e sensori</button>
+<button data-view="scadenze">▣ &nbsp; Scadenze e tarature</button>
+<button data-view="movimenti">⇄ &nbsp; Movimenti</button>
+<button data-view="documenti">▱ &nbsp; Documenti</button>
+<button data-view="report">▥ &nbsp; Report</button>
+<button data-view="impostazioni">⚙ &nbsp; Amministrazione</button>
+</nav>
+<div class="status"><span class="dot"></span>Sistema operativo<br><br>Prototipo v0.1</div>
+</aside>
+<main>
+<section id="home" class="view active">
+<h1>Benvenuto</h1><div class="sub">Seleziona una funzione per iniziare a progettare il nuovo gestionale NBCR.</div>
+<div class="grid">
+<div class="card" data-view="materiali"><div class="icon">⚗</div><h3>Materiali</h3><p>Gestione articoli, quantità, lotti, scadenze e documentazione.</p></div>
+<div class="card" data-view="strumenti"><div class="icon">🔧</div><h3>Strumentazione</h3><p>Gestione matricole, stato, tarature, manutenzioni e riparazioni.</p></div>
+<div class="card" data-view="bombole"><div class="icon">◎</div><h3>Bombole e sensori</h3><p>Scorte, validità, compatibilità e ricambi.</p></div>
+<div class="card" data-view="scadenze"><div class="icon">▣</div><h3>Scadenze e tarature</h3><p>Controllo automatico delle prossime scadenze.</p></div>
+<div class="card" data-view="movimenti"><div class="icon">⇄</div><h3>Movimenti</h3><p>Carichi, scarichi, trasferimenti e storico operatori.</p></div>
+<div class="card" data-view="documenti"><div class="icon">▱</div><h3>Documenti</h3><p>Manuali, certificati, schede tecniche e dichiarazioni.</p></div>
+<div class="card" data-view="report"><div class="icon">▥</div><h3>Report</h3><p>Statistiche, inventari ed esportazioni.</p></div>
+<div class="card" data-view="impostazioni"><div class="icon">⚙</div><h3>Amministrazione</h3><p>Utenti, configurazione e future funzioni QR.</p></div>
+</div>
+<div class="notice">🔔 <b>Predisposizione futura:</b> il sistema sarà progettato per ricevere movimenti anche tramite QR code da smartphone.</div>
+</section>
+
+<section id="materiali" class="view"><button class="back" data-view="home">← Home</button><h1>Materiali</h1><div class="sub">Anteprima della struttura che svilupperemo a partire dai dati reali.</div><table><tr><th>Materiale</th><th>Categoria</th><th>Quantità</th><th>Stato</th></tr><tr><td>Demo - Filtro ABEK</td><td>Filtri</td><td>—</td><td>Da importare</td></tr></table></section>
+<section id="strumenti" class="view"><button class="back" data-view="home">← Home</button><h1>Strumentazione</h1><div class="sub">Qui ogni strumento avrà la propria scheda e il proprio storico.</div><table><tr><th>Matricola</th><th>Modello</th><th>Stato</th><th>Taratura</th></tr><tr><td>—</td><td>Da importare</td><td>—</td><td>—</td></tr></table></section>
+<section id="bombole" class="view"><button class="back" data-view="home">← Home</button><h1>Bombole e sensori</h1><div class="sub">Gestione separata per gas di taratura e sensori di ricambio.</div></section>
+<section id="scadenze" class="view"><button class="back" data-view="home">← Home</button><h1>Scadenze e tarature</h1><div class="sub">Dashboard futura con scaduti, 30/90/180 giorni e tarature imminenti.</div></section>
+<section id="movimenti" class="view"><button class="back" data-view="home">← Home</button><h1>Movimenti</h1><div class="sub">Il modulo sarà progettato fin dall'inizio per supportare anche gli ingressi futuri tramite QR.</div></section>
+<section id="documenti" class="view"><button class="back" data-view="home">← Home</button><h1>Documenti</h1><div class="sub">Archivio collegato a materiali, strumenti e tarature.</div></section>
+<section id="report" class="view"><button class="back" data-view="home">← Home</button><h1>Report</h1><div class="sub">Report inventariali, scadenze, strumenti e movimenti.</div></section>
+<section id="impostazioni" class="view"><button class="back" data-view="home">← Home</button><h1>Amministrazione</h1><div class="sub">Utenti, ruoli, parametri e configurazione del sistema.</div></section>
+</main></div>
+<script>
+function show(id){
+ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));
+}
+document.addEventListener('click',e=>{const el=e.target.closest('[data-view]'); if(el) show(el.dataset.view)});
+</script>
+</body></html>
